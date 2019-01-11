@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bash
+## Debug Mode
+if [ "$DEBUG_MODE" = "TRUE" ] || [ "$DEBUG_MODE" = "true" ];  then
+    set -x
+fi
+
+NTP_SERVER=${NTP_SERVER:-"cn.pool.ntp.org"}
+NTP_ALLOW=${NTP_ALLOW:-"0.0.0.0/0"}
+
+INIT_FILE="`basename $0`-init"
+
+if [ ! -f /tmp/state/$INIT_FILE ]; then
+    sed -e "s/<NTP_SERVER>/$NTP_SERVER/g" \
+        -e "s|<NTP_ALLOW>|$NTP_ALLOW|g" \
+        -i /etc/chrony/chrony.conf
+    
+    mkdir -p /tmp/state
+    touch /tmp/state/$INIT_FILE
+fi
