@@ -1,4 +1,6 @@
-# alpine-s6
+### Default Environment Variables
 
-NTP_SERVER
-NTP_ALLOW
+```bash   
+NTP_SERVER=${NTP_SERVER:-"cn.pool.ntp.org"}    
+NTP_ALLOW=${NTP_ALLOW:-"0.0.0.0/0"}   
+```
