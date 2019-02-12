@@ -1,10 +1,9 @@
 FROM ivixq/alpine-s6
-MAINTAINER ivixq
+LABEL maintainer=ivixq
 
-ENV ZABBIX_HOSTNAME=chronyd
+ENV ZABBIX_HOSTNAME=chrony
 
-RUN apk --no-cache  update ; \
-    apk --no-cache upgrade ; \
+RUN apk --no-cache upgrade ; \
     apk --no-cache add \
         chrony \
 	; \
