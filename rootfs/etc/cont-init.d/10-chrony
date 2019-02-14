@@ -4,7 +4,7 @@ if [ "$DEBUG_MODE" = "TRUE" ] || [ "$DEBUG_MODE" = "true" ];  then
 fi
 
 NTP_SERVER=${NTP_SERVER:-"cn.pool.ntp.org"}
-NTP_ALLOW=${NTP_ALLOW:-"0.0.0.0/0"}
+NTP_ALLOW=${NTP_ALLOW:-"all"}
 
 if [ ! -f /tmp/state/`basename $0`-init ]; then
     sed -e "s/<NTP_SERVER>/$NTP_SERVER/g" \
